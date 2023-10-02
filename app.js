@@ -1,24 +1,50 @@
-var name = prompt("Enter your name:");
-var gender = prompt("Enter your gender (male/female):").toLowerCase();
-var title = "";
-
-if (gender === "male") {
-    title = "Mr";
-} else if (gender === "female") {
-    title = "Ms";
-} else {
-    alert("Welcome, " + name + "!");
+function GetUserGender() {
+    while (true) {
+        let userGender = prompt("Please enter user gender (male or female):").toLowerCase();
+        if (userGender === "male") {
+            alert("Welcome, Mr. " + userName);
+            return "Mr.";
+        } else if (userGender === "female") {
+            alert("Welcome, Ms. " + userName);
+            return "Ms.";
+        } else {
+            alert("Invalid input. Please enter 'male' or 'female'.");
+        }
+    }
 }
 
-var drinkType = prompt("Do you want a hot or cold drink?").toLowerCase();
-var drinkName = prompt("Enter the name of your drink:");
+let orders = [];
 
-if (name && (gender === "male" || gender === "female") && (drinkType === "hot" || drinkType === "cold") && drinkName) {
-    alert("Welcome, " + title + " " + name + "!");
-    alert("Your " + drinkType + " " + drinkName + " is getting prepared!");
+let userName = prompt("Please enter your name:");
+let userTitle = GetUserGender();
+let drinkType = prompt("Would you like to drink hot or cold drink?");
+let drinkName = prompt("Please enter your drink name:");
 
-    var orderDetails = "Name: " + name + "\nDrink: " + drinkType + " " + drinkName;
-    console.log(orderDetails);
+let orderInfo = {
+    userName: userName,
+    userGender: userTitle,
+    drinkType: drinkType,
+    drinkName: drinkName
+};
+
+orders.push(orderInfo);
+
+alert("Your " + drinkType + " " + drinkName + " is getting prepared.");
+
+let confirmMessage = "Hello, " + userTitle + " " + userName + "! You ordered a " + drinkType + " " + drinkName + ".";
+
+if (confirm(confirmMessage)) {
+    console.log(confirmMessage);
 } else {
-    alert("Please fill out all the information correctly.");
+    console.log("User has canceled his order.");
+}
+
+console.log("All orders: ", orders);
+
+for (let i = 0; i < orders.length; i++) {
+    console.log("Order " + (i + 1) + ":");
+    console.log("Name: " + orders[i].userName);
+    console.log("Gender: " + orders[i].userGender);
+    console.log("Drink Type: " + orders[i].drinkType);
+    console.log("Drink Name: " + orders[i].drinkName);
 }
