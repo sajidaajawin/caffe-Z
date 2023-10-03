@@ -2,10 +2,8 @@ function GetUserGender() {
     while (true) {
         let userGender = prompt("Please enter user gender (male or female):").toLowerCase();
         if (userGender === "male") {
-            alert("Welcome, Mr. " + userName);
             return "Mr.";
         } else if (userGender === "female") {
-            alert("Welcome, Ms. " + userName);
             return "Ms.";
         } else {
             alert("Invalid input. Please enter 'male' or 'female'.");
@@ -29,22 +27,22 @@ let orderInfo = {
 
 orders.push(orderInfo);
 
-alert("Your " + drinkType + " " + drinkName + " is getting prepared.");
+let orderList = document.getElementById("orderList");
+let orderDetails = document.getElementById("orderDetails");
 
-let confirmMessage = "Hello, " + userTitle + " " + userName + "! You ordered a " + drinkType + " " + drinkName + ".";
+let listItem = document.createElement("li");
+listItem.textContent = `Name: ${userName}, Gender: ${userTitle}, Drink Type: ${drinkType}, Drink Name: ${drinkName}`;
 
-if (confirm(confirmMessage)) {
-    console.log(confirmMessage);
-} else {
-    console.log("User has canceled his order.");
-}
+orderListItem.appendChild(li2);
+li2.textContent = "Gender: " + orderInfo.userGender;
+orderListItem.appendChild(li3);
+li3.textContent = "Age: " + orderInfo.userGender;
+orderListItem.appendChild(li4);
 
-console.log("All orders: ", orders);
+document.getElementById("orderDetails").appendChild(paragraph);
+document.getElementById("orderDetails").appendChild(orderListItem);
 
-for (let i = 0; i < orders.length; i++) {
-    console.log("Order " + (i + 1) + ":");
-    console.log("Name: " + orders[i].userName);
-    console.log("Gender: " + orders[i].userGender);
-    console.log("Drink Type: " + orders[i].drinkType);
-    console.log("Drink Name: " + orders[i].drinkName);
-}
+
+
+
+
