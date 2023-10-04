@@ -29,22 +29,15 @@ let orderInfo = {
 
 orders.push(orderInfo);
 
-alert("Your " + drinkType + " " + drinkName + " is getting prepared.");
+let orderDetailsDiv = document.getElementById("orderDetails");
+let orderList = document.getElementById("orderList");
 
-let confirmMessage = "Hello, " + userTitle + " " + userName + "! You ordered a " + drinkType + " " + drinkName + ".";
+let listItem = document.createElement("li");
+let paragraph = document.createElement("p");
 
-if (confirm(confirmMessage)) {
-    console.log(confirmMessage);
-} else {
-    console.log("User has canceled his order.");
-}
+paragraph.textContent = `Name: ${userName}, Gender: ${userTitle}, Drink Type: ${drinkType}, Drink Name: ${drinkName}`;
 
-console.log("All orders: ", orders);
+listItem.appendChild(paragraph);
+orderList.appendChild(listItem);
 
-for (let i = 0; i < orders.length; i++) {
-    console.log("Order " + (i + 1) + ":");
-    console.log("Name: " + orders[i].userName);
-    console.log("Gender: " + orders[i].userGender);
-    console.log("Drink Type: " + orders[i].drinkType);
-    console.log("Drink Name: " + orders[i].drinkName);
-}
+orderDetailsDiv.appendChild(orderList);
